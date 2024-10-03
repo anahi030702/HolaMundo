@@ -59,6 +59,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cambiarTransparencia() {
+        imvSaludo.alpha = CGFloat(sldTransparencia.value)
+        lblTransparencia.text = String(format: "%.2f", sldTransparencia.value)
     }
 }
 

@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" constant="42" id="Vuu-Hz-cZt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CH1-v0-Td4">
                                 <rect key="frame" x="145" y="144" width="150" height="42"/>
@@ -34,6 +34,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Aceptar"/>
+                                <connections>
+                                    <action selector="mostrarSaludo" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rcp-I6-xAO"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwH-UL-eOL">
                                 <rect key="frame" x="44" y="206" width="352" height="90"/>
@@ -55,6 +58,9 @@
                                     <segment title="VERDE"/>
                                     <segment title="AMARILLO"/>
                                 </segments>
+                                <connections>
+                                    <action selector="cambiarColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bt9-tu-ala"/>
+                                </connections>
                             </segmentedControl>
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cON-qT-4H5">
                                 <rect key="frame" x="44" y="835" width="49" height="31"/>
@@ -64,6 +70,9 @@
                                 </constraints>
                                 <color key="onTintColor" red="0.74117648599999997" green="0.15294116739999999" blue="0.2352941036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="ocultarImagen" destination="BYZ-38-t0r" eventType="valueChanged" id="bGU-YY-NZe"/>
+                                </connections>
                             </switch>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veP-mF-bYO">
                                 <rect key="frame" x="349" y="836.66666666666663" width="47" height="28"/>
@@ -80,13 +89,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="e8O-6q-UfV"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="cambiarTransparencia" destination="BYZ-38-t0r" eventType="valueChanged" id="q7L-Nu-hQ1"/>
+                                </connections>
                             </slider>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="pelicula1sinopsisq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="U7t-bv-qPR">
                                 <rect key="frame" x="10" y="298" width="420" height="530"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="3J0-PV-18x" firstAttribute="top" secondItem="cON-qT-4H5" secondAttribute="bottom" constant="10" id="4kU-Iu-lMS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U7t-bv-qPR" secondAttribute="trailing" constant="10" id="C6q-Fx-OB7"/>
@@ -112,6 +124,14 @@
                             <constraint firstItem="veP-mF-bYO" firstAttribute="leading" secondItem="ahg-2D-tsm" secondAttribute="trailing" constant="10" id="zy4-LI-qFi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imvSaludo" destination="U7t-bv-qPR" id="Ikb-rG-88y"/>
+                        <outlet property="lblSaludo" destination="kwH-UL-eOL" id="H9U-bb-DiU"/>
+                        <outlet property="lblTransparencia" destination="veP-mF-bYO" id="ecD-se-fKx"/>
+                        <outlet property="sldTransparencia" destination="ahg-2D-tsm" id="Uir-RZ-IqF"/>
+                        <outlet property="swtImagen" destination="cON-qT-4H5" id="bNu-0y-MYW"/>
+                        <outlet property="txtNombre" destination="QE0-o8-sGH" id="qus-zr-FYa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,8 +140,8 @@
     </scenes>
     <resources>
         <image name="pelicula1sinopsisq.jpg" width="800" height="800"/>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
